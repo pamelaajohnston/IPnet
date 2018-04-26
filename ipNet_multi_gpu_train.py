@@ -178,9 +178,9 @@ def train():
                                     staircase=True)
 
     # Create an optimizer that performs gradient descent.
-    opt = tf.train.GradientDescentOptimizer(lr)
+    #opt = tf.train.GradientDescentOptimizer(lr)
     #opt = tf.train.RMSPropOptimizer(lr)
-    #opt = tf.train.AdamOptimizer()
+    opt = tf.train.AdamOptimizer(0.00001)
 
     # Calculate the gradients for each model tower.
     tower_grads = []
@@ -276,8 +276,12 @@ def train():
         examples_per_sec = num_examples_per_step / duration
         sec_per_batch = duration / FLAGS.num_gpus
 
-        format_str = ('%s: step %d, loss = %.2f (%.1f examples/sec; %.3f ' 'sec/batch)')
-        print (format_str % (datetime.now(), step, loss_value, examples_per_sec, sec_per_batch))
+        #format_str = ('%s: step %d, loss = %.2f (%.1f examples/sec; %.3f ' 'sec/batch)')
+        #print (format_str % (datetime.now(), step, loss_value, examples_per_sec, sec_per_batch))
+        with sess.as_default():
+            a = lr.eval()
+        format_str = ('%s: nwa %d, lr %f, step %d, loss = %.2f ')
+        print (format_str % (datetime.now(), FLAGS.network_architecture, a, step, loss_value))
         sys.stdout.flush()
 
       if step % 100 == 0:

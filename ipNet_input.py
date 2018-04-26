@@ -25,8 +25,9 @@ INPUT_IMAGE_HEIGHT = 32
 # Number of classes
 NUM_CLASSES = 2
 # This is the number of training examples in the dataset - one epoch runs over all the examples
-NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = 2050 # mobile_tempete_cif
+#NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = 2050 # mobile_tempete_cif
 #NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = 20422 # mobile_tempete_cif
+NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = 16994 # mobile_tempete_cif
 NUM_EXAMPLES_PER_EPOCH_FOR_EVAL = 1650 # foreman_flowers_cif
 
 

@@ -274,6 +274,10 @@ if __name__ == "__main__":
     encodedFolderI = "/Volumes/LaCie/data/YUV_Patches/IP/cifOnly_train/intra"
     encodedFolderP = "/Volumes/LaCie/data/YUV_Patches/IP/cifOnly_train/non-intra"
 
+    YUVsourceFolder = "/Volumes/LaCie/data/YUV_Patches/IP/YUV_test"
+    encodedFolderI = "/Volumes/LaCie/data/YUV_Patches/IP/cifOnly_test/intra"
+    encodedFolderP = "/Volumes/LaCie/data/YUV_Patches/IP/cifOnly_test/non-intra"
+
     if encodeEm:
         encodeYUV.encodeAWholeFolderAsH264(YUVsourceFolder, takeAll=True, intraOnly=False, encodedFolder=encodedFolderP)
         encodeYUV.encodeAWholeFolderAsH264(YUVsourceFolder, takeAll=True, intraOnly=True, encodedFolder=encodedFolderI)
