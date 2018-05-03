@@ -49,6 +49,7 @@ tf.app.flags.DEFINE_integer('max_steps', 30000, """Number of batches to run.""")
 tf.app.flags.DEFINE_integer('num_gpus', 1, """How many GPUs to use.""")
 tf.app.flags.DEFINE_boolean('log_device_placement', False,  """Whether to log device placement.""")
 tf.app.flags.DEFINE_string('mylog_dir', '/Users/pam/Documents/temp/',  """Directory where to write my logs """)
+tf.app.flags.DEFINE_integer('optimizer', 0, """0 Adam Optimizer, 1 Gradient Descent Optimizer""")
 #tf.app.flags.DEFINE_integer('network_architecture', 1, """The number of the network architecture to use (inference function) """)
 
 #tf.app.flags.DEFINE_string('single_dir', '_yuv', """For defining the single directory """)
@@ -178,9 +179,13 @@ def train():
                                     staircase=True)
 
     # Create an optimizer that performs gradient descent.
-    #opt = tf.train.GradientDescentOptimizer(lr)
+    if FLAGS.optimizer == 0:
+        opt = tf.train.AdamOptimizer(0.00001)
+    else:
+        opt = tf.train.GradientDescentOptimizer(lr)
     #opt = tf.train.RMSPropOptimizer(lr)
-    opt = tf.train.AdamOptimizer(0.00001)
+    #
+    #opt = tf.train.MomentumOptimizer(0.1, 0.8)
 
     # Calculate the gradients for each model tower.
     tower_grads = []
